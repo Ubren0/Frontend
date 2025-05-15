@@ -1,0 +1,28 @@
+/* === Gráficos === */
+.charts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.chart-container {
+    background: var(--card-light);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    flex: 1;
+    min-width: 300px;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* === Responsividade adicional === */
+@media (max-width: 600px) {
+    .charts {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Definindo o ícone do site -->
+    <link rel="icon" type="image/x-icon" href="../IMG/logo.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Serviço - Controle de Pragas</title>
+    <!-- Link para o CSS da página -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../CSS/Servico.css">
+    <link rel="stylesheet" href="../CSS/base.css">
+</head>
+
+<body>
+    <!-- Sidebar do sistema -->
+    <div class="sidebar">
+        <h2>Controle de Pragas</h2>
+        <ul>
+            <!-- Menu de navegação da sidebar -->
+            <li onclick="window.location.href='dashboard.html'">🏠 Dashboard</li>
+            <li onclick="window.location.href='clientes.html'">🏢 Clientes</li>
+            <li onclick="window.location.href='servico.html'">🪲 Serviços</li>
+            <!-- Submenu de configurações -->
+            <li onclick="toggleSubmenu()" class="config-toggle">
+                ⚙ Configurações <span id="seta">▼</span>
+            </li>
+            <ul class="submenu" id="submenu">
+                <li onclick="window.location.href='usuarios.html'">👤 Usuários</li>
+                <li onclick="window.location.href='confservico.html'">🛠️Configuração De Serviços</li>
+            </ul>
+            <ul>
+                <li onclick="logout()">🚪 Sair</li>
+            </ul>
+        </ul>
+    </div>
+
+    <!-- Conteúdo principal da página -->
+    <div class="content">
+        <h1 class="mb-4">Agendamento de Serviço</h1>
+
+        <!-- Formulário de agendamento com classes Bootstrap -->
+        <form id="agendamentoForm" class="shadow p-4 bg-white rounded needs-validation" novalidate>
+            <!-- Campo para pesquisa de cliente com classes Bootstrap -->
+            <div class="mb-3">
+                <label for="pesquisaCliente" class="form-label">Pesquisar Cliente:</label>
+                <div class="d-flex">
+                    <input type="text" id="pesquisaCliente" class="form-control me-2"
+                        placeholder="Digite o ID, nome ou CNPJ/CPF do cliente">
+                    <button type="button" class="btn btn-dark" onclick="pesquisarCliente()">🔍 Buscar</button>
+                </div>
+            </div>
+
+            <!-- Exibição das informações do cliente -->
+            <div id="clienteInfo" class="row g-3">
+                <div class="col-md-6">
+                    <label for="nomeCliente" class="form-label">Nome do Cliente:</label>
+                    <input type="text" id="nomeCliente" class="form-control bg-light" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label for="enderecoCliente" class="form-label">Endereço:</label>
+                    <input type="text" id="enderecoCliente" class="form-control bg-light" disabled>
+                </div>
+            </div>
+
+            <!-- Seleção do serviço -->
+            <div class="mb-3 mt-3">
+                <label for="servico" class="form-label">Selecione o Serviço:</label>
+                <select id="servico" class="form-select" required>
+                    <option value="desinfeccao">Desinfecção de Ambientes (fungos, bactérias e vírus)</option>
+                    <option value="dedetizacao">Dedetização Geral (baratas, formigas, traças, etc.)</option>
+                    <option value="percevejos">Combate a Percevejos de Cama</option>
+                    <option value="ratos">Controle de Ratos</option>
+                    <option value="mosquitos">Controle de Mosquitos e Moscas</option>
+                    <option value="servico_personalizado">Serviço Personalizado para Empresas, Indústrias e Portos
+                    </option>
+                </select>
+            </div>
+
+            <!-- Seleção da data do agendamento -->
+            <div class="mb-4">
+                <label for="dataAgendamento" class="form-label">Data do Agendamento:</label>
+                <input type="date" id="dataAgendamento" class="form-control" required>
+                <div class="invalid-feedback">Por favor, selecione uma data.</div>
+            </div>
+
+            <!-- Botão para agendar o serviço -->
+            <button type="submit" class="btn btn-success w-100">Agendar Serviço</button>
+        </form>
+    </div>
+
+    <!-- Modal de sucesso ao agendar o serviço (Bootstrap) -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="successModalLabel">Sucesso!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center">✅ Serviço agendado com sucesso!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link para os scripts JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../JS/base.js"></script>
+    <script src="../JS/servico.js"></script>
+</body>
+
+</html>

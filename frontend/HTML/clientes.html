@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Ícone que aparece na aba do navegador -->
+    <link rel="icon" type="IMG/x-icon" href="../IMG/logo.ico">
+
+    <!-- Configurações de codificação e responsividade -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título da página -->
+    <title>Clientes - Controle de Pragas</title>
+
+    <!-- Link para o arquivo de estilos CSS específico da tela de clientes -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/clientes.css">
+    <link rel="stylesheet" href="../CSS/base.css">
+</head>
+
+<body>
+    <!-- Barra lateral (menu de navegação do sistema) -->
+    <div class="sidebar">
+        <h2>Controle de Pragas</h2>
+        <ul>
+            <!-- Link para a tela de dashboard -->
+            <li onclick="window.location.href='dashboard.html'">🏠 Dashboard</li>
+
+            <!-- Página atual: Clientes (sem redirecionamento) -->
+            <li>🏢 Clientes</li>
+
+            <!-- Link para a tela de serviços -->
+            <li onclick="window.location.href='Servico.html'">🪲 Serviços</li>
+
+            <!-- Item de menu que expande o submenu de configurações -->
+            <li onclick="toggleSubmenu()" class="config-toggle">
+                ⚙ Configurações <span id="seta">▼</span>
+            </li>
+
+            <!-- Submenu com várias opções de configuração -->
+            <ul class="submenu" id="submenu">
+                <li onclick="window.location.href='usuarios.html'">👤 Usuários</li>
+                <li onclick="window.location.href='confservico.html'">🛠️Configuração De Serviços</li>
+
+            </ul>
+
+            <!-- Opção de logout -->
+            <li onclick="logout()">🚪 Sair</li>
+        </ul>
+    </div>
+
+    <!-- Área principal de conteúdo da página -->
+    <div class="content">
+        <h1>Clientes Cadastrados</h1>
+
+        <!-- Card com os dados e ações relacionadas aos clientes -->
+        <div class="card">
+            <h3>🏢 Lista de Clientes</h3>
+
+            <!-- Campo de busca para filtrar clientes -->
+            <input type="text" id="searchClientes" placeholder="🔍 Buscar cliente..." onkeyup="filtrarClientes()">
+
+            <!-- Botão para adicionar novo cliente -->
+            <button class="btn" onclick="window.location.href='cadastroCliente.html'">➕ Adicionar Cliente</button>
+
+            <!-- Botão para atualizar a lista de clientes -->
+            <button class="btn" onclick="carregarClientes()">🔄 Atualizar</button>
+
+            <!-- Tabela onde os clientes serão listados -->
+            <table border="1" width="100%" id="tabelaClientes">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>E-mail</th>
+                        <th>Endereço</th>
+                        <th>Ações</th> <!-- Aqui podem entrar botões de editar/excluir -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As linhas com os dados dos clientes serão inseridas aqui via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Link para o script JavaScript que gerencia o comportamento da tela -->
+    <script src="../js/base.js"></script>
+    <script src="../js/cliente.js"></script>
+</body>
+
+</html>
