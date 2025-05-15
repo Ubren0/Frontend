@@ -78,3 +78,37 @@ function inicializarPagina() {
     btnSubmenu.addEventListener("click", toggleSubmenu);
   }
 }
+// Formulário de Usuário
+document.getElementById("formUsuario").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    // Verificação de campos obrigatórios
+    const camposObrigatorios = ["nome", "login", "senha", "confirmarSenha"];
+    if (!validarCamposObrigatorios(camposObrigatorios)) return;
+
+    const senha = document.getElementById("senha").value;
+    const confirmarSenha = document.getElementById("confirmarSenha").value;
+    if (senha !== confirmarSenha) {
+        alert("❌ As senhas não coincidem!");
+        return;
+    }
+
+    const usuario = {
+        nome: document.getElementById("nome").value,
+        login: document.getElementById("login").value,
+        senha, // cuidado: em produção deve-se criptografar
+        email: document.getElementById("email").value,
+        telefone: document.getElementById("telefone").value,
+        cargo: document.getElementById("cargo").value,
+    };
+
+    // Armazena o usuário no localStorage (pode ser adaptado para API/BD)
+    salvarNoLocalStorage("usuario_" + usuario.login, usuario);
+
+    // Mostra popup de sucesso
+    document.getElementById("popup").style.display = "flex";
+});
+function toggleSenha() {
+    const inputSenha = document.getElementById("senha");
+    inputSenha.type = inputSenha.type === "password" ? "text" : "password";
+}
