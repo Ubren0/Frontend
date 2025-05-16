@@ -1,5 +1,6 @@
+// Aguarda o carregamento completo do DOM antes de executar o código
 document.addEventListener("DOMContentLoaded", () => {
-    carregarClientes();
+    carregarClientes(); // Chama a função para carregar e exibir os clientes na tabela
 });
 
 let listaClientes = []; // Array simulado. Substitua futuramente por dados do backend.
