@@ -6,7 +6,7 @@
 function toggleSubmenu() {
   const submenu = document.getElementById("submenu");
   const seta = document.getElementById("seta");
-  
+
   if (submenu.style.display === "block") {
     submenu.style.display = "none";
     seta.innerHTML = "▼";
@@ -82,55 +82,75 @@ function inicializarPagina() {
     window.location.href = "login.html";
     return;
   }
-  
+
   const btnLogout = document.getElementById("btnLogout");
   if (btnLogout) {
     btnLogout.addEventListener("click", logout);
   }
-  
+
   const btnSubmenu = document.getElementById("btnSubmenu");
   if (btnSubmenu) {
     btnSubmenu.addEventListener("click", toggleSubmenu);
   }
 }
+$(document).ready(function () {
+      $("#calendar").evoCalendar({
+        theme: "Royal Navy", // Você pode usar "Royal Navy", "Midnight Blue", "Orange Coral", "Blue Coral"
+        calendarEvents: [
+          {
+            id: "event1", // ID opcional
+            name: "Serviço Exemplo", 
+            date: "2025-05-20",
+            type: "event", 
+            description: "Dedetização em Cliente X",
+          },
+          {
+            name: "Revisão Mensal",
+            date: "2025-05-25",
+            type: "holiday",
+            description: "Revisão mensal preventiva em Cliente Y"
+          }
+        ]
+      });
+    });
 
 // Formulário de Usuário
 
 // Adiciona evento de submit ao formulário de usuário
-document.getElementById("formUsuario").addEventListener("submit", function(e) {
-    e.preventDefault();
+document.getElementById("formUsuario").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-    // Verificação de campos obrigatórios
-    const camposObrigatorios = ["nome", "login", "senha", "confirmarSenha"];
-    if (!validarCamposObrigatorios(camposObrigatorios)) return;
+  // Verificação de campos obrigatórios
+  const camposObrigatorios = ["nome", "login", "senha", "confirmarSenha"];
+  if (!validarCamposObrigatorios(camposObrigatorios)) return;
 
-    // Verifica se as senhas coincidem
-    const senha = document.getElementById("senha").value;
-    const confirmarSenha = document.getElementById("confirmarSenha").value;
-    if (senha !== confirmarSenha) {
-        alert("❌ As senhas não coincidem!");
-        return;
-    }
+  // Verifica se as senhas coincidem
+  const senha = document.getElementById("senha").value;
+  const confirmarSenha = document.getElementById("confirmarSenha").value;
+  if (senha !== confirmarSenha) {
+    alert("❌ As senhas não coincidem!");
+    return;
+  }
 
-    // Cria objeto usuário com os dados do formulário
-    const usuario = {
-        nome: document.getElementById("nome").value,
-        login: document.getElementById("login").value,
-        senha, // cuidado: em produção deve-se criptografar
-        email: document.getElementById("email").value,
-        telefone: document.getElementById("telefone").value,
-        cargo: document.getElementById("cargo").value,
-    };
+  // Cria objeto usuário com os dados do formulário
+  const usuario = {
+    nome: document.getElementById("nome").value,
+    login: document.getElementById("login").value,
+    senha, // cuidado: em produção deve-se criptografar
+    email: document.getElementById("email").value,
+    telefone: document.getElementById("telefone").value,
+    cargo: document.getElementById("cargo").value,
+  };
 
-    // Armazena o usuário no localStorage (pode ser adaptado para API/BD)
-    salvarNoLocalStorage("usuario_" + usuario.login, usuario);
+  // Armazena o usuário no localStorage (pode ser adaptado para API/BD)
+  salvarNoLocalStorage("usuario_" + usuario.login, usuario);
 
-    // Mostra popup de sucesso
-    document.getElementById("popup").style.display = "flex";
+  // Mostra popup de sucesso
+  document.getElementById("popup").style.display = "flex";
 });
 
 // Alterna a visualização da senha entre texto e password
 function toggleSenha() {
-    const inputSenha = document.getElementById("senha");
-    inputSenha.type = inputSenha.type === "password" ? "text" : "password";
+  const inputSenha = document.getElementById("senha");
+  inputSenha.type = inputSenha.type === "password" ? "text" : "password";
 }

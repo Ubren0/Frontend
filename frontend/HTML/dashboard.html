@@ -18,21 +18,24 @@
     <!-- Barra lateral de navegação -->
     <div class="sidebar">
         <h2>Controle de Pragas</h2>
-        <ul>
-            <li onclick="window.location.href='dashboard.html'">🏠 Dashboard</li>
-            <li onclick="window.location.href='clientes.html'">🏢 Clientes</li>
-            <li onclick="window.location.href='servico.html'">🪲 Serviços</li>
-
-            <li onclick="toggleSubmenu()" class="config-toggle">
-                ⚙ Configurações <span id="seta">▼</span>
-            </li>
-            <ul class="submenu" id="submenu">
-                <li onclick="window.location.href='usuarios.html'">👤 Usuários</li>
-                <li onclick="window.location.href='confservico.html'">🛠️ Configuração De Serviços</li>
+        <!-- Sidebar padronizada -->
+        <nav class="sidebar">
+            <h2>Controle de Pragas</h2>
+            <ul>
+                <li onclick="window.location.href='dashboard.html'">🏠 Dashboard</li>
+                <li onclick="window.location.href='clientes.html'">🏢 Clientes</li>
+                <li onclick="window.location.href='servico.html'">🪲 Serviços</li>
+                <li onclick="window.location.href='agenda.html'">📅 Agenda</li>
+                <li class="config-toggle" onclick="toggleSubmenu()" aria-expanded="false" aria-controls="submenu">
+                    ⚙ Configurações <span id="seta">▼</span>
+                    <ul class="submenu" id="submenu" role="menu" aria-label="Submenu de configurações">
+                        <li onclick="window.location.href='usuarios.html'">👤 Usuários</li>
+                        <li onclick="window.location.href='tipoServico.html'">📦 Tipo de Serviço</li>
+                    </ul>
+                </li>
+                <li onclick="logout()">🚪 Sair</li>
             </ul>
-
-            <li onclick="logout()">🚪 Sair</li>
-        </ul>
+        </nav>
 
     </div>
 
@@ -249,7 +252,7 @@
                                             <th>Cliente</th>
                                             <th>Serviço</th>
                                             <th>Data</th>
-                                            <th>Ações</th>
+                                            <!-- Ações removidas -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -257,31 +260,19 @@
                                             <td>Residência Silva</td>
                                             <td>Dedetização</td>
                                             <td>18/05/2025</td>
-                                            <td>
-                                                <button class="btn btn-sm btn-outline-secondary">
-                                                    <i class="bi bi-pencil"></i>
-                                                </button>
-                                            </td>
+                                            <!-- Célula de Ações removida -->
                                         </tr>
                                         <tr>
                                             <td>Indústria ACME</td>
                                             <td>Controle de Pragas</td>
                                             <td>19/05/2025</td>
-                                            <td>
-                                                <button class="btn btn-sm btn-outline-secondary">
-                                                    <i class="bi bi-pencil"></i>
-                                                </button>
-                                            </td>
+                                            <!-- Célula de Ações removida -->
                                         </tr>
                                         <tr>
                                             <td>Loja 456</td>
                                             <td>Desinfecção</td>
                                             <td>20/05/2025</td>
-                                            <td>
-                                                <button class="btn btn-sm btn-outline-secondary">
-                                                    <i class="bi bi-pencil"></i>
-                                                </button>
-                                            </td>
+                                            <!-- Célula de Ações removida -->
                                         </tr>
                                     </tbody>
                                 </table>

@@ -14,22 +14,24 @@
 
     <div class="sidebar">
         <h2>Controle de Pragas</h2>
-        <ul>
-            <li onclick="window.location.href='dashboard.html'">🏠 Dashboard</li>
-            <li onclick="window.location.href='clientes.html'">🏢 Clientes</li>
-            <li onclick="window.location.href='servico.html'">🪲 Serviços</li>
-
-            <!-- Configurações com submenu expansível -->
-            <li onclick="toggleSubmenu()" class="config-toggle">
-                ⚙ Configurações <span id="seta">▼</span>
-            </li>
-            <ul class="submenu" id="submenu">
-                <li onclick="window.location.href='usuarios.html'">👤 Usuários</li>
-                <li onclick="window.location.href='confservico.html'">🛠️Configuração De Serviços</li>
+        <!-- Sidebar padronizada -->
+        <nav class="sidebar">
+            <h2>Controle de Pragas</h2>
+            <ul>
+                <li onclick="window.location.href='dashboard.html'">🏠 Dashboard</li>
+                <li onclick="window.location.href='clientes.html'">🏢 Clientes</li>
+                <li onclick="window.location.href='servico.html'">🪲 Serviços</li>
+                <li onclick="window.location.href='agenda.html'">📅 Agenda</li>
+                <li class="config-toggle" onclick="toggleSubmenu()" aria-expanded="false" aria-controls="submenu">
+                    ⚙ Configurações <span id="seta">▼</span>
+                    <ul class="submenu" id="submenu" role="menu" aria-label="Submenu de configurações">
+                        <li onclick="window.location.href='usuarios.html'">👤 Usuários</li>
+                        <li onclick="window.location.href='tipoServico.html'">📦 Tipo de Serviço</li>
+                    </ul>
+                </li>
+                <li onclick="logout()">🚪 Sair</li>
             </ul>
-
-            <li onclick="logout()">🚪 Sair</li>
-        </ul>
+        </nav>
     </div>
 
     <div class="content">
@@ -40,7 +42,8 @@
         </div>
 
         <!-- Adicionar Usuário -->
-        <button onclick="window.location.href='cadastroUsuario.html'" class="btn-cadastro">Cadastrar Novo Usuário</button>
+        <button onclick="window.location.href='cadastroUsuario.html'" class="btn-cadastro">Cadastrar Novo
+            Usuário</button>
 
         <table class="tabela-usuarios">
             <thead>
