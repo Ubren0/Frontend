@@ -1,67 +1,52 @@
-/* START OF FILE servico.css */
-
-/*
-  Estilos específicos para a página de Agendamento de Serviço.
-  A maioria dos estilos de layout e componentes são fornecidos
-  pelo Bootstrap e base.css. Use este arquivo para ajustes pontuais
-  ou estilos que não se encaixam nos arquivos globais.
-*/
-
-/* Garante que a seção de agendamento esteja oculta por padrão */
+/* Oculta a seção de agendamento por padrão */
 #secaoAgendarServico {
     display: none;
 }
 
-/* Estilo para os itens da lista de serviços adicionados */
+/* Estiliza os itens da lista de serviços agendados */
 #servicosAgendadosUL li {
-    /* Removi a borda e padding explícitos que já são handled pelo .list-group-item */
-    border: 1px solid #ddd;
-    padding: 10px 14px;
-    border-radius: 6px;
-    margin-bottom: 8px;
-    background-color: #f8f9fa; /* Fundo cinza claro do Bootstrap */
-    /* As classes d-flex, justify-content-between, align-items-center no HTML já fazem o layout */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    border: 1px solid #ddd; /* Borda sutil */
+    padding: 10px 14px; /* Espaçamento interno */
+    border-radius: 6px; /* Cantos levemente arredondados */
+    margin-bottom: 8px; /* Espaçamento entre itens */
+    background-color: #f8f9fa; /* Cor de fundo clara (Bootstrap) */
+    display: flex; /* Layout flexível */
+    justify-content: space-between; /* Distribuição entre texto e botão */
+    align-items: center; /* Alinhamento vertical central */
 }
 
-/* Ajusta o botão de remover na lista */
+/* Ajusta o estilo do botão de remoção nos itens da lista */
 #servicosAgendadosUL .btn-danger {
-    /* Ajusta a margem ou alinhamento se necessário */
-    margin-left: 10px; /* Espaçamento entre o texto do serviço e o botão */
-    padding: 4px 10px; /* Padding menor para botões pequenos */
-    font-size: 0.875rem; /* Tamanho da fonte menor (equivalente a 14px se base for 16px) */
-    border-radius: 4px; /* Borda levemente arredondada */
+    margin-left: 10px; /* Espaço entre o texto e o botão */
+    padding: 4px 10px; /* Tamanho compacto do botão */
+    font-size: 0.875rem; /* Fonte menor (14px) */
+    border-radius: 4px; /* Cantos arredondados suaves */
 }
 
-/* Estilos para a área de informações do cliente encontrado */
+/* Estiliza a área de informações do cliente dentro da seção de agendamento */
 #secaoAgendarServico .bg-light {
-    background-color: var(--bg-dark) !important; /* Usa a variável do base.css para consistência */
-    border-color: #ccc !important;
-    padding: 1rem; /* Padding interno */
-    border-radius: 8px; /* Borda arredondada */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Sombra leve */
+    background-color: var(--bg-dark) !important; /* Usa a variável global para consistência visual */
+    border-color: #ccc !important; /* Cor da borda neutra */
+    padding: 1rem; /* Espaçamento interno padrão */
+    border-radius: 8px; /* Borda suavemente arredondada */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* Sombra sutil */
     color: #000000; /* Cor do texto */
 }
 
-/* Remove a margin-bottom padrão do último parágrafo na info do cliente */
+/* Remove o espaço inferior do último parágrafo nas informações do cliente */
 #clienteInfo p:last-child {
     margin-bottom: 0;
 }
 
-/* Estilos para o input de busca na seção de busca */
+/* Estiliza o campo de busca da seção de clientes */
 #secaoBuscarCliente .form-control {
-    border-radius: 6px;
-    padding: 8px 12px; /* Ajuste de padding */
-    font-size: 1rem; /* Tamanho da fonte */
-}        
+    border-radius: 6px; /* Borda arredondada */
+    padding: 8px 12px; /* Espaçamento interno ajustado */
+    font-size: 1rem; /* Tamanho de fonte padrão */
+}
 
+/* Ajusta o posicionamento lateral do campo de busca */
 #divBuscaCliente {
     margin-left: 40px;
     margin-right: 0;
-    
 }
-/* Adicione outros estilos específicos aqui conforme a necessidade */
-
-/* END OF FILE servico.css */
