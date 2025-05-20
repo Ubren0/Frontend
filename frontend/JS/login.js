@@ -1,29 +1,43 @@
-// Carrega usuário salvo (se houver) ao abrir a página
+/**
+ * Gerenciamento de login e autenticação
+ */
+
+// Carrega usuário salvo ao iniciar
 window.onload = function () {
-    let usuarioSalvo = localStorage.getItem("usuario");
+    const usuarioSalvo = recuperarDoLocalStorage("usuario");
     if (usuarioSalvo) {
         document.getElementById("usuario").value = usuarioSalvo;
         document.getElementById("lembrarMe").checked = true;
     }
 };
 
-// Função que executa ao clicar no botão "Entrar"
+// Função de login
 function fazerLogin() {
-    var usuario = document.getElementById("usuario").value;
-    var lembrarMe = document.getElementById("lembrarMe").checked;
+    const usuario = document.getElementById("usuario").value;
+    const senha = document.getElementById("senha").value;
+    const lembrarMe = document.getElementById("lembrarMe").checked;
 
-    if (lembrarMe) {
-        localStorage.setItem("usuario", usuario);
-    } else {
-        localStorage.removeItem("usuario");
+    // Validação básica
+    if (!usuario || !senha) {
+        alert("Por favor, preencha todos os campos!");
+        return;
     }
 
-    // Redireciona direto para a página do dashboard
-    window.location.href = "dashboard.html";
+    // Verifica credenciais fixas
+    if (usuario === "Admin" && senha === "1234") {
+        // Salva dados da sessão
+        localStorage.setItem("sessaoAtiva", "true");
+        localStorage.setItem("usuarioAtual", usuario);
+        
+        if (lembrarMe) {
+            localStorage.setItem("usuario", usuario);
+        } else {
+            localStorage.removeItem("usuario");
+        }
+
+        window.location.href = "dashboard.html";
+    } else {
+        alert("Usuário ou senha incorretos!");
+    }
 }
 
-// Alterna visibilidade da senha (mostrar/ocultar)
-function toggleSenha() {
-    var senha = document.getElementById("senha");
-    senha.type = senha.type === "password" ? "text" : "password";
-}
