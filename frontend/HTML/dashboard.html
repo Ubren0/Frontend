@@ -1,308 +1,122 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <!-- Ícone da aba -->
-    <link rel="icon" href="../IMG/logo.ico">
-
-    <!-- Configurações básicas da página -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Controle de Pragas</title>
+    <link rel="icon" href="../IMG/logo.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../CSS/base.css">
     <link rel="stylesheet" href="../css/dashboard.css">
 </head>
-
 <body>
-    <!-- Barra lateral de navegação -->
+    <!-- Barra lateral de navegação (Sidebar) - Sem alterações -->
     <div>
         <nav class="sidebar">
             <h2>Controle de Pragas</h2>
             <ul>
-                <li onclick="window.location.href='dashboard.html'">
-                    <i class="bi bi-house-door-fill"></i> Dashboard
-                </li>
-                <li onclick="window.location.href='clientes.html'">
-                    <i class="bi bi-buildings-fill"></i> Clientes
-                </li>
-                <li onclick="window.location.href='servico.html'">
-                    <i class="bi bi-bug-fill"></i> Serviços
-                </li>
-                <li onclick="window.location.href='agenda.html'">
-                    <i class="bi bi-calendar-event-fill"></i> Agenda
-                </li>
-                <li class="config-toggle" onclick="toggleSubmenu()" aria-expanded="false" aria-controls="submenu">
+                <li onclick="window.location.href='dashboard.html'"><i class="bi bi-house-door-fill"></i> Dashboard</li>
+                <li onclick="window.location.href='clientes.html'"><i class="bi bi-buildings-fill"></i> Clientes</li>
+                <li onclick="window.location.href='servico.html'"><i class="bi bi-bug-fill"></i> Serviços</li>
+                <li onclick="window.location.href='agenda.html'"><i class="bi bi-calendar-event-fill"></i> Agenda</li>
+                <li class="config-toggle" onclick="toggleSubmenu()">
                     <i class="bi bi-gear-fill"></i> Configurações <span id="seta">▼</span>
                 </li>
-                <ul class="submenu" id="submenu" role="menu" aria-label="Submenu de configurações">
-                    <li onclick="window.location.href='usuarios.html'">
-                        <i class="bi bi-person-fill"></i> Usuários
-                    </li>
-                    <li onclick="window.location.href='tipoServico.html'">
-                        <i class="bi bi-box-fill"></i> Tipo de Serviço
-                    </li>
+                <ul class="submenu" id="submenu">
+                    <li onclick="window.location.href='usuarios.html'"><i class="bi bi-person-fill"></i> Usuários</li>
+                    <li onclick="window.location.href='tipoServico.html'"><i class="bi bi-box-fill"></i> Tipo de Serviço</li>
                 </ul>
-                <li onclick="logout()">
-                    <i class="bi bi-box-arrow-right"></i> Sair
-                </li>
+                <li onclick="logout()"><i class="bi bi-box-arrow-right"></i> Sair</li>
             </ul>
         </nav>
     </div>
-    <!-- Conteúdo principal -->
-    <main class="content">
-        <!-- Cabeçalho da página -->
-        <header class="page-header">
+
+    <!-- Conteúdo principal - ADAPTADO para usar a classe "content" original -->
+    <div class="content">
+        <header class="d-flex justify-content-between align-items-center pb-2 mb-3 border-bottom">
             <div>
-                <h1>Dashboard</h1>
+                <h1 class="h2">Dashboard</h1>
                 <p class="text-muted">Visão geral do sistema</p>
             </div>
-            <!-- Cards de resumo -->
-            <section class="dashboard-summary">
-                <div class="row">
-                    <!-- Card de clientes -->
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="card dashboard-card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="card-subtitle text-muted">Total de Clientes</h6>
-                                        <h2 class="card-title mb-0" id="clientesCount">0</h2>
-                                        <p class="small text-success">
-                                            <i class="bi bi-arrow-up"></i> 12% esse mês
-                                        </p>
-                                    </div>
-                                    <div class="icon-bg">
-                                        <i class="bi bi-building text-primary"></i>
-                                    </div>
-                                </div>
-                                <a href="clientes.html" class="stretched-link"></a>
-                            </div>
-                        </div>
-                    </div>
+        </header>
 
-                    <!-- Card de usuários -->
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="card dashboard-card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="card-subtitle text-muted">Usuários Ativos</h6>
-                                        <h2 class="card-title mb-0" id="usuariosCount">0</h2>
-                                        <p class="small text-success">
-                                            <i class="bi bi-arrow-up"></i> 5% esse mês
-                                        </p>
-                                    </div>
-                                    <div class="icon-bg">
-                                        <i class="bi bi-people text-success"></i>
-                                    </div>
-                                </div>
-                                <a href="usuarios.html" class="stretched-link"></a>
-                            </div>
+        <!-- Cards de resumo (usando grid Bootstrap) -->
+        <section class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card dashboard-card h-100">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-subtitle text-muted">Total de Clientes</h6>
+                            <h2 class="card-title mb-0" id="clientesCount">...</h2>
                         </div>
-                    </div>
-
-                    <!-- Card de serviços -->
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="card dashboard-card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="card-subtitle text-muted">Serviços este mês</h6>
-                                        <h2 class="card-title mb-0" id="servicosCount">0</h2>
-                                        <p class="small text-danger">
-                                            <i class="bi bi-arrow-down"></i> 3% comparado ao mês anterior
-                                        </p>
-                                    </div>
-                                    <div class="icon-bg">
-                                        <i class="bi bi-calendar2-check text-warning"></i>
-                                    </div>
-                                </div>
-                                <a href="servico.html" class="stretched-link"></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card de faturamento -->
-                    <div class="col-lg-3 col-md-6 mb-4">
-                        <div class="card dashboard-card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <h6 class="card-subtitle text-muted">Faturamento</h6>
-                                        <h2 class="card-title mb-0">R$ 24.500</h2>
-                                        <p class="small text-success">
-                                            <i class="bi bi-arrow-up"></i> 18% esse mês
-                                        </p>
-                                    </div>
-                                    <div class="icon-bg">
-                                        <i class="bi bi-cash-coin text-info"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="icon-bg bg-primary-soft"><i class="bi bi-buildings text-primary"></i></div>
                     </div>
                 </div>
-            </section>
-
-            <!-- Gráficos e estatísticas -->
-            <section class="dashboard-charts">
-                <div class="row">
-                    <!-- Gráfico de serviços por mês -->
-                    <div class="col-lg-8 mb-4">
-                        <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="card-title mb-0">Serviços Realizados</h5>
-                                <div class="dropdown">
-                                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
-                                        id="chartDropdown" data-bs-toggle="dropdown">
-                                        Últimos 6 meses
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Último mês</a></li>
-                                        <li><a class="dropdown-item" href="#">Últimos 3 meses</a></li>
-                                        <li><a class="dropdown-item" href="#">Últimos 6 meses</a></li>
-                                        <li><a class="dropdown-item" href="#">Este ano</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="graficoServicos" height="250"></canvas>
-                            </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card dashboard-card h-100">
+                     <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-subtitle text-muted">Serviços este mês</h6>
+                            <h2 class="card-title mb-0" id="servicosCount">...</h2>
                         </div>
-                    </div>
-
-                    <!-- Gráfico circular de tipos de serviço -->
-                    <div class="col-lg-4 mb-4">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">Tipos de Serviço</h5>
-                            </div>
-                            <div class="card-body d-flex justify-content-center align-items-center">
-                                <canvas id="graficoTiposServico"></canvas>
-                            </div>
-                            <div class="card-footer bg-white">
-                                <div class="row text-center">
-                                    <div class="col">
-                                        <p class="mb-1 text-muted small">Dedetização</p>
-                                        <h5>42%</h5>
-                                    </div>
-                                    <div class="col">
-                                        <p class="mb-1 text-muted small">Desinfecção</p>
-                                        <h5>28%</h5>
-                                    </div>
-                                    <div class="col">
-                                        <p class="mb-1 text-muted small">Outros</p>
-                                        <h5>30%</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="icon-bg bg-warning-soft"><i class="bi bi-calendar2-check text-warning"></i></div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Serviços recentes e agendados -->
-            <section class="dashboard-tables">
-                <div class="row">
-                    <!-- Serviços recentes -->
-                    <div class="col-lg-6 mb-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">Serviços Recentes</h5>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Cliente</th>
-                                            <th>Serviço</th>
-                                            <th>Data</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Empresa ABC</td>
-                                            <td>Dedetização</td>
-                                            <td>12/05/2025</td>
-                                            <td><span class="badge bg-success">Concluído</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Condomínio XYZ</td>
-                                            <td>Controle de Ratos</td>
-                                            <td>10/05/2025</td>
-                                            <td><span class="badge bg-success">Concluído</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Restaurante 123</td>
-                                            <td>Desinfecção</td>
-                                            <td>08/05/2025</td>
-                                            <td><span class="badge bg-success">Concluído</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="card-footer text-end">
-                                <a href="servico.html" class="btn btn-sm btn-outline-primary">Ver todos</a>
-                            </div>
+        <!-- Gráficos (usando grid Bootstrap) -->
+        <section class="row">
+            <div class="col-lg-8 mb-4">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Serviços Realizados</h5>
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <span id="filtroLabel">Últimos 6 meses</span>
+                            </button>
+                            <ul class="dropdown-menu" id="filtroGrafico">
+                                <li><a class="dropdown-item" href="#" data-periodo="1m">Último mês</a></li>
+                                <li><a class="dropdown-item" href="#" data-periodo="3m">Últimos 3 meses</a></li>
+                                <li><a class="dropdown-item" href="#" data-periodo="6m">Últimos 6 meses</a></li>
+                            </ul>
                         </div>
                     </div>
-
-                    <!-- Próximos agendamentos -->
-                    <div class="col-lg-6 mb-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">Próximos Agendamentos</h5>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Cliente</th>
-                                            <th>Serviço</th>
-                                            <th>Data</th>
-                                            <!-- Ações removidas -->
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Residência Silva</td>
-                                            <td>Dedetização</td>
-                                            <td>18/05/2025</td>
-                                            <!-- Célula de Ações removida -->
-                                        </tr>
-                                        <tr>
-                                            <td>Indústria ACME</td>
-                                            <td>Controle de Pragas</td>
-                                            <td>19/05/2025</td>
-                                            <!-- Célula de Ações removida -->
-                                        </tr>
-                                        <tr>
-                                            <td>Loja 456</td>
-                                            <td>Desinfecção</td>
-                                            <td>20/05/2025</td>
-                                            <!-- Célula de Ações removida -->
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="card-footer text-end">
-                                <a href="servico.html" class="btn btn-sm btn-success">Agendar novo</a>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="card-body"><canvas id="graficoServicos"></canvas></div>
                 </div>
-            </section>
-    </main>
-    <!-- Script principal da página -->
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-header"><h5 class="card-title mb-0">Tipos de Serviço</h5></div>
+                    <div class="card-body"><canvas id="graficoTiposServico"></canvas></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Tabelas (usando grid Bootstrap) -->
+        <section class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-header"><h5 class="card-title mb-0">Serviços Recentes</h5></div>
+                    <div class="table-responsive"><table class="table table-hover table-sm mb-0"><thead><tr><th>Cliente</th><th>Serviço</th><th>Data</th><th>Status</th></tr></thead><tbody id="tabelaRecentes"></tbody></table></div>
+                    <div class="card-footer text-end"><a href="servico.html" class="btn btn-sm btn-outline-primary">Ver todos</a></div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card">
+                    <div class="card-header"><h5 class="card-title mb-0">Próximos Agendamentos</h5></div>
+                    <div class="table-responsive"><table class="table table-hover table-sm mb-0"><thead><tr><th>Cliente</th><th>Serviço</th><th>Data</th></tr></thead><tbody id="tabelaAgendamentos"></tbody></table></div>
+                    <div class="card-footer text-end"><a href="agenda.html" class="btn btn-sm btn-success">Agendar novo</a></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/base.js"></script>
     <script src="../js/dashboard.js"></script>
-
-
 </body>
-
 </html>

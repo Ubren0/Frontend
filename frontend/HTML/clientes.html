@@ -65,11 +65,11 @@
             <!-- Campo de busca para filtrar clientes -->
             <input type="text" id="searchClientes" placeholder="🔍 Buscar cliente..." onkeyup="filtrarClientes()">
 
-            <!-- Botão para adicionar novo cliente -->
-            <button class="btn" onclick="window.location.href='cadastroCliente.html'">➕ Adicionar Cliente</button>
-
-            <!-- Botão para atualizar a lista de clientes -->
-            <button class="btn" onclick="carregarClientes()">🔄 Atualizar</button>
+            <!-- Contêiner para os botões de ação do card -->
+            <div class="card-actions">
+                <button class="btn" onclick="window.location.href='cadastroCliente.html'">➕ Adicionar Cliente</button>
+                <button class="btn" onclick="carregarClientes()">🔄 Atualizar</button>
+            </div>
 
             <!-- Tabela onde os clientes serão listados -->
             <table border="1" width="100%" id="tabelaClientes">

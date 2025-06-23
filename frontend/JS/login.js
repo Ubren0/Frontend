@@ -35,7 +35,7 @@ function fazerLogin() {
             localStorage.removeItem("usuario");
         }
 
-        window.location.href = "dashboard.html";
+        window.location.href = "/HTML/dashboard.html";
     } else {
         alert("Usuário ou senha incorretos!");
     }
